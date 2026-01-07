@@ -1,0 +1,26 @@
+{
+  "name": "playwright-cucumber-gherkin",
+  "version": "1.0.0",
+  "description": "Playwright automation with Cucumber/Gherkin",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:tag": "playwright test --grep",
+    "playwright:install": "playwright install"
+  },
+  "keywords": [
+    "playwright",
+    "cucumber",
+    "gherkin",
+    "bdd",
+    "testing"
+  ],
+  "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.6",
+    "playwright-bdd": "^7.0.0",
+    "typescript": "^5.3.3"
+  }
+}
