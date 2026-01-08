@@ -11,13 +11,17 @@ type CustomFixtures = {
 // apiClient: High-level API client wrapper with authentication
 export const test = bddTest.extend<CustomFixtures>({
   // Provide API client instance with authenticated request
-  apiClient: async ({}, use) => {
+  apiClient: async ({ baseURL }, use) => {
+    const apiBaseURL =
+      baseURL ||
+      process.env.API_BASE_URL ||
+      "https://jsonplaceholder.typicode.com";
     const authenticatedRequest = await playwrightRequest.newContext({
       extraHTTPHeaders: {
         Authorization: "Bearer THIS-IS-A-FAKE-TOKEN",
       },
     });
-    const client = new APIClient(authenticatedRequest);
+    const client = new APIClient(authenticatedRequest, apiBaseURL);
     await use(client); // makes the apiClient instance available to each test
     await authenticatedRequest.dispose(); // removing resources, cookies, at the end of each test
   },

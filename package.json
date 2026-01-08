@@ -8,7 +8,9 @@
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:tag": "playwright test --grep",
-    "playwright:install": "playwright install"
+    "playwright:install": "playwright install",
+    "report:generate": "node reporting/generate-report.js",
+    "test:report": "npm test && npm run report:generate"
   },
   "keywords": [
     "playwright",
@@ -20,6 +22,7 @@
   "devDependencies": {
     "@playwright/test": "^1.40.1",
     "@types/node": "^20.10.6",
+    "multiple-cucumber-html-reporter": "^3.8.0",
     "playwright-bdd": "^7.0.0",
     "typescript": "^5.3.3"
   }

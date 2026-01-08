@@ -42,6 +42,23 @@ export class APIRequestWrapper {
     );
   }
 
+  // For negative testing - returns response without validation
+  async getUnvalidated(url: string): Promise<APIResponse> {
+    const response = await this.request.get(url);
+    const status = response.status();
+    return response;
+  }
+
+  // For negative testing - returns PUT response without validation
+  async putUnvalidated(
+    url: string,
+    options?: { data?: any }
+  ): Promise<APIResponse> {
+    const response = await this.request.put(url, options);
+    const status = response.status();
+    return response;
+  }
+
   private async executeWithRetry(
     requestFn: () => Promise<APIResponse>,
     method: string,

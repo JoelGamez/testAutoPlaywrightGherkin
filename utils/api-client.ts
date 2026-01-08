@@ -8,10 +8,11 @@ import {
 import { APIRequestWrapper } from "../utils/api-helpers";
 
 export class APIClient {
-  private baseURL = "https://jsonplaceholder.typicode.com";
+  private baseURL: string;
   private request: APIRequestWrapper;
 
-  constructor(requestContext: APIRequestContext) {
+  constructor(requestContext: APIRequestContext, baseURL: string) {
+    this.baseURL = baseURL;
     this.request = new APIRequestWrapper(requestContext);
   }
 
@@ -68,5 +69,15 @@ export class APIClient {
   async getPost(postId: number): Promise<Post> {
     const response = await this.request.get(`${this.baseURL}/posts/${postId}`);
     return response.json();
+  }
+
+  // Make raw GET request without validation (for negative testing)
+  async rawGet(url: string): Promise<APIResponse> {
+    return this.request.getUnvalidated(url);
+  }
+
+  // Make raw PUT request without validation (for negative testing)
+  async rawPut(url: string, data?: any): Promise<APIResponse> {
+    return this.request.putUnvalidated(url, { data });
   }
 }

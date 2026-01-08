@@ -1,5 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
-import { defineBddConfig } from "playwright-bdd";
+import { defineBddConfig, cucumberReporter } from "playwright-bdd";
 
 const testDir = defineBddConfig({
   features: "features/**/*.feature",
@@ -13,12 +13,13 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: [
-    ["html", { outputFolder: "playwright-report" }],
-    ["json", { outputFile: "playwright-report/report.json" }],
     ["list"],
+    cucumberReporter("json", {
+      outputFile: "cucumber-json/report.cucumber.json",
+    }),
   ],
   use: {
-    baseURL: "https://playwright.dev",
+    baseURL: "https://jsonplaceholder.typicode.com",
     trace: "on-first-retry",
     screenshot: "only-on-failure",
     video: "retain-on-failure",

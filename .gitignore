@@ -11,6 +11,9 @@ test-results/
 playwright-report/
 playwright/.cache/
 .features-gen/
+cucumber-json/
+cucumber-html-report/
+.cucumber-messages/
 
 # Videos and screenshots
 videos/
