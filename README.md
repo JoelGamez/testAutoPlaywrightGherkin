@@ -127,6 +127,7 @@ Tags let you filter which tests run. Our scenarios use `@api` and `@negative` ta
 # Run tests with specific tag + generate report
 npm run test:report -- --grep @api
 npm run test:report -- --grep @negative
+
 ```
 
 After running tests with the report flag, open `reporting/cucumber-html-report/index.html` in your browser to see the detailed Cucumber-style report.
