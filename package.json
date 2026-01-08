@@ -4,13 +4,14 @@
   "description": "Playwright automation with Cucumber/Gherkin",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test",
-    "test:headed": "playwright test --headed",
-    "test:ui": "playwright test --ui",
-    "test:tag": "playwright test --grep",
+    "test": "npx bddgen && playwright test",
+    "test:tag": "npx bddgen && playwright test --grep",
+    "test:report": "npx bddgen && playwright test && npm run report:generate",
+    "test:full": "npx bddgen && playwright test --grep @api && npm run report:generate",
+    "test:positive": "npx bddgen && playwright test jsonplaceholder-api.feature && npm run report:generate",
+    "test:negative": "npx bddgen && playwright test --grep @negative && npm run report:generate",
     "playwright:install": "playwright install",
-    "report:generate": "node reporting/generate-report.js",
-    "test:report": "npm test && npm run report:generate"
+    "report:generate": "node reporting/generate-report.js"
   },
   "keywords": [
     "playwright",
