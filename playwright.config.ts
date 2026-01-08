@@ -15,7 +15,7 @@ export default defineConfig({
   reporter: [
     ["list"],
     cucumberReporter("json", {
-      outputFile: "cucumber-json/report.cucumber.json",
+      outputFile: "reporting/cucumber-json/report.cucumber.json",
     }),
   ],
   use: {
