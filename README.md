@@ -99,13 +99,12 @@ All test commands automatically run `bddgen` first, so you don't have to worry a
 
 ### Basic Commands
 
-````bash
+```bash
 # Run all tests
 npm test
 
 ### Running with Reports
 
-```bash
 # Run all tests and generate HTML report
 npm run test:report
 
@@ -117,7 +116,7 @@ npm run test:positive
 
 # Run only negative scenarios with report
 npm run test:negative
-````
+```
 
 ### Using Tags
 
